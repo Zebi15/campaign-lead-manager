@@ -1,61 +1,119 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Campaign Lead Manager
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel application for managing campaigns and leads, featuring a robust bulk import functionality with validation and error reporting.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Campaign management (CRUD operations)
+- Lead management with campaign association
+- Bulk import of leads from Excel/CSV files
+- Advanced validation for phone numbers and emails
+- Detailed error reporting for failed imports
+- User-friendly Filament admin interface
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Docker & Docker Compose
+- Git
+- WSL2 (for Windows users)
 
-## Learning Laravel
+## Installation & Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Clone the Repository
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone https://github.com/yourusername/campaign-lead-manager.git
+cd campaign-lead-manager
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Using Laravel Sail (Docker)
 
-## Laravel Sponsors
+#### Windows Users with WSL2
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Make sure you have Docker Desktop and WSL2 installed
+2. Start Docker Desktop
+3. In your WSL2 terminal, navigate to your project directory
 
-### Premium Partners
+#### Start the Application
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+1. Copy the environment file:
+```bash
+cp .env.example .env
+```
 
-## Contributing
+2. Start Docker containers:
+```bash
+./vendor/bin/sail up -d
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> **Tip**: You can create a shell alias for the sail command to make it shorter:
+> ```bash
+> alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+> ```
+> After setting this alias, you can simply use `sail` instead of `./vendor/bin/sail`
 
-## Code of Conduct
+3. Install dependencies:
+```bash
+./vendor/bin/sail composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Generate application key:
+```bash
+./vendor/bin/sail artisan key:generate
+```
 
-## Security Vulnerabilities
+5. Run migrations:
+```bash
+./vendor/bin/sail artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Create an admin user:
+```bash
+./vendor/bin/sail artisan make:filament-user
+```
+
+## Using the Application
+
+Once installation is complete, you can access the application:
+
+1. Open your browser and navigate to: `http://localhost`
+2. Log in using the credentials you created during setup
+3. Use the Filament admin panel to manage campaigns and leads
+
+## Bulk Import Feature
+
+The application provides a powerful bulk import feature for leads:
+
+1. Navigate to the Leads section
+2. Click on the "Import Leads" button
+3. Select a campaign from the dropdown
+4. Upload an Excel (.xlsx) or CSV (.csv) file
+5. The system will import valid leads and generate an error report for any invalid entries
+
+### CSV/Excel Format
+
+Your import file should include these columns:
+- `name` - The lead's name
+- `email` - A valid email address
+- `phone_number` - Phone number in international format (e.g., +1234567890)
+
+### Validation
+
+The import process validates:
+- Required fields (name, email, phone_number)
+- Valid email format
+- International phone number format (using Google's libphonenumber library)
+
+If validation fails for any row, it will be skipped but valid rows will still be imported.
+
+## Development
+
+### Useful Commands
+
+- Start Sail: `./vendor/bin/sail up -d`
+- Stop Sail: `./vendor/bin/sail down`
+- Run migrations: `./vendor/bin/sail artisan migrate`
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
