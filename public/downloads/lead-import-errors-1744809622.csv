@@ -1,4 +1,0 @@
-name,email,phone_number,"Validation Error"
-"Bob Johnson",not-an-email,61412345678,"Invalid email format"
-"Alice Williams",alice@example.com,190,"The phone number is not valid according to international standards"
-,missing@example.com,_#12,"Name is required, The phone number format is incorrect: The string supplied did not seem to be a phone number."

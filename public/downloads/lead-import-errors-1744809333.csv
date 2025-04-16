@@ -1,7 +1,0 @@
-name,email,phone_number,"Validation Error"
-"John Doe",john@example.com,40741234567,"The phone number format is incorrect. Phone numbers must start with + followed by country code (e.g., +40 for Romania)."
-"Jane Smith",jane@example.com,1987654321,"The phone number format is incorrect. Phone numbers must start with + followed by country code (e.g., +40 for Romania)."
-"Invalid User",,123,"Email is required, The phone number format is incorrect. Phone numbers must start with + followed by country code (e.g., +40 for Romania)."
-"Bad Email",notanemail,1234567890,"Invalid email format, The phone number format is incorrect. Phone numbers must start with + followed by country code (e.g., +40 for Romania)."
-"No Phone",nophone@example.com,,"Phone number is required"
-"Apostol Eusebiu",eusebiuapostol@gmail.com,40787632887,"The phone number format is incorrect. Phone numbers must start with + followed by country code (e.g., +40 for Romania)."

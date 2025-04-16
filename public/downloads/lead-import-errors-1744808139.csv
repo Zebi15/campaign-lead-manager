@@ -1,7 +1,0 @@
-name,email,phone_number,"Validation Error"
-"John Doe",john@example.com,1234567890,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."
-"Jane Smith",jane@example.com,1987654321,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."
-"Invalid User",,123,"Email is required, The phone number format is incorrect. Please include country code (e.g., +1 for US)."
-"Bad Email",notanemail,1234567890,"Invalid email format, The phone number format is incorrect. Please include country code (e.g., +1 for US)."
-"No Phone",nophone@example.com,,"Phone number is required"
-"Apostol Eusebiu",eusebiuapostol@gmail.com,787632887,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."
