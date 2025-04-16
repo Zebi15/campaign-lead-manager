@@ -1,0 +1,5 @@
+name,email,phone_number,"Validation Error"
+"Jane Smith",jane@example.com,1987654321,"The phone number is not valid according to international standards"
+"Invalid User",,123,"Email is required, The phone number is not valid according to international standards"
+"Bad Email",notanemail,1234567890,"Invalid email format, The phone number is not valid according to international standards"
+"No Phone",nophone@example.com,,"Phone number is required"

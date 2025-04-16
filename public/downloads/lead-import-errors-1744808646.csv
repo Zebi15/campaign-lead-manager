@@ -1,0 +1,5 @@
+name,email,phone_number,"Validation Error"
+"John Doe",john@example.com,14255550123,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."
+"Jane Smith",jane@example.com,447911123456,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."
+"Andrei Popescu",andrei@example.ro,40712345678,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."
+"Maria Ionescu",maria@example.ro,40741234567,"The phone number format is incorrect. Please include country code (e.g., +1 for US)."

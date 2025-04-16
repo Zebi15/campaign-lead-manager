@@ -1,0 +1,5 @@
+name,email,phone_number,"Validation Error"
+"Invalid User",,+123,"The email field is required."
+"Bad Email",notanemail,+1234567890,"The email field must be a valid email address."
+"No Phone",nophone@example.com,,"The phone number field is required."
+"Apostol Eusebiu",eusebiuapostol@gmail.com,+0787632887,"The phone number field format is invalid."

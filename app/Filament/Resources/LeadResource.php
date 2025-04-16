@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\LeadResource\Pages;
 use App\Filament\Resources\LeadResource\RelationManagers;
+use App\Imports\LeadImport;
+use App\Models\Campaign;
 use App\Models\Lead;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,6 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LeadResource extends Resource
 {
@@ -29,7 +33,7 @@ class LeadResource extends Resource
                 Select::make('campaign_id')
                     ->label('Campaign')
                     ->options(function () {
-                        return \App\Models\Campaign::pluck('name', 'id');
+                        return Campaign::pluck('name', 'id');
                     })
                     ->required()
                     ->searchable(),

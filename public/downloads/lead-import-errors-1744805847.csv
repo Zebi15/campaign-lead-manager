@@ -1,0 +1,4 @@
+name,email,phone_number,"Validation Error"
+"Invalid User",,123,"Email is required"
+"Bad Email",notanemail,1234567890,"Invalid email format"
+"No Phone",nophone@example.com,,"Phone number is required"
